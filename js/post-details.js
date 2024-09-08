@@ -16,9 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
             postBlock.classList.add('post-details');
 
             const postBlockTitle = document.createElement('h1');
+            postBlockTitle.classList.add('hero-title', 'post-hero-title');
             postBlockTitle.innerText = `${post.title}`;
 
             const postBlockText = document.createElement('p');
+            postBlockText.classList.add('post-block-text');
             postBlockText.innerText = `${post.body}`;
 
             const commentsTitle = document.createElement('h2');
@@ -37,19 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     comments.forEach(comment => {
                         const commentItem = document.createElement('li');
+                        commentItem.classList.add('comment-item');
 
                         const commentInfoList = document.createElement('ul');
+                        commentInfoList.classList.add('comment-info-list');
 
                         commentsList.appendChild(commentItem);
                         commentItem.appendChild(commentInfoList);
 
                         for (const commentKey in comment) {
                             const commentInfoItem = document.createElement('li');
+                            commentInfoItem.classList.add('comment-info-item');
 
                             const commentInfoTitle = document.createElement('h2');
+                            commentInfoTitle.classList.add('comment-info-title');
                             commentInfoTitle.innerText = `${commentKey}`;
 
                             const commentInfoText = document.createElement('p');
+                            commentInfoText.classList.add('comment-info-text');
                             commentInfoText.innerText = `${comment[commentKey]}`;
 
                             commentInfoItem.append(commentInfoTitle, commentInfoText);

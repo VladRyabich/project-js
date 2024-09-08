@@ -13,9 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(`https://jsonplaceholder.typicode.com/users/${idUser}`)
         .then(response => response.json())
         .then(user => {
+            const heroTitle = document.getElementById('heroTitle');
+            heroTitle.innerText = user.name;
+
+
             for (const userKeys in user) {
                 const userDetailsItem = document.createElement('li');
-                userDetailsItem.classList.add('user-detail-item');
+                userDetailsItem.classList.add('user-info-item');
 
                 const userDetailsTitle = document.createElement('h2');
                 userDetailsTitle.classList.add('user-details-title');
@@ -42,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const userDetailsAddedInfo = document.createElement('p');
 
                         userDetailsSubtitle.innerText = `${iternalUserKeys}`;
+                        userDetailsAddedInfo.classList.add('user-details-added-info');
                         userDetailsAddedInfo.innerText = `${user[userKeys][iternalUserKeys]}`;
 
                         iternalListInKey.appendChild(iternalItemInKey);
@@ -58,9 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                                 // userGeoItem.innerText = `${userGeoKey} : ${user[userKeys][iternalUserKeys][userGeoKey]}`
                                 const userGeoTitle = document.createElement('h4');
+                                userGeoTitle.classList.add('user-details-title');
                                 userGeoTitle.innerText = `${userGeoKey}`;
 
                                 const userGeoLocation = document.createElement('p');
+                                userGeoLocation.classList.add('user-location');
                                 userGeoLocation.innerText = `${user[userKeys][iternalUserKeys][userGeoKey]}`;
 
                                 userGeoItem.append(userGeoTitle, userGeoLocation);
@@ -78,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     userDetailsList.appendChild(userDetailsItem);
                 }
             }
+
             const btnWrapper = document.createElement('div');
             btnWrapper.classList.add('btn-wrapper');
 
@@ -105,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             postItem.classList.add('post-item');
 
                             const userPostTitle = document.createElement('h2');
+                            userPostTitle.classList.add('post-title');
                             userPostTitle.innerText = `${post.title}`;
 
                             const userPostBtn = document.createElement('a');
@@ -121,6 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const backPageWrapper = document.createElement('div');
             backPageWrapper.classList.add('back-page-wrapper');
             backPageWrapper.innerHTML = `<a class="btn" onclick="history.back(); return false;">Back</a>`;
-            userDetails.appendChild(backPageWrapper);
+            userContainer.appendChild(backPageWrapper);
         });
 });
