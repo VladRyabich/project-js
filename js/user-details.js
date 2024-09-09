@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const heroTitle = document.getElementById('heroTitle');
             heroTitle.innerText = user.name;
 
-
             for (const userKeys in user) {
                 const userDetailsItem = document.createElement('li');
                 userDetailsItem.classList.add('user-info-item');
@@ -56,12 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         userDetailsList.appendChild(userDetailsItem);
 
+                        // Не згайшов рішення як прибрати [Object object]//
                         if (typeof user[userKeys][iternalUserKeys] === 'object') {
 
                             for (const userGeoKey in user[userKeys][iternalUserKeys]) {
                                 const userGeoItem = document.createElement('li');
 
-                                // userGeoItem.innerText = `${userGeoKey} : ${user[userKeys][iternalUserKeys][userGeoKey]}`
                                 const userGeoTitle = document.createElement('h4');
                                 userGeoTitle.classList.add('user-details-title');
                                 userGeoTitle.innerText = `${userGeoKey}`;
